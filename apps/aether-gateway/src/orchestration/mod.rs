@@ -20,11 +20,10 @@ pub(crate) use self::adaptive::{
     LocalAdaptiveRateLimitProjection, LocalAdaptiveSuccessProjection,
 };
 pub(crate) use self::attempt::{
-    attempt_identity_from_report_context, build_local_attempt_identities,
-    insert_pool_key_lease_report_context_fields, local_attempt_slot_count,
-    local_execution_candidate_metadata_from_report_context, ExecutionAttemptIdentity,
-    LocalExecutionCandidateMetadata, ROUTING_POOL_POLICY_OVERRIDE_REPORT_FIELD,
-    SCHEDULER_AFFINITY_EPOCH_REPORT_FIELD,
+    attempt_identity_from_report_context, insert_pool_key_lease_report_context_fields,
+    local_execution_candidate_metadata_from_report_context, next_same_key_retry_attempt,
+    ExecutionAttemptIdentity, LocalExecutionCandidateMetadata, POOL_KEY_RETRY_INDEX_STRIDE,
+    ROUTING_POOL_POLICY_OVERRIDE_REPORT_FIELD, SCHEDULER_AFFINITY_EPOCH_REPORT_FIELD,
 };
 pub(crate) use self::classifier::{
     classify_anthropic_failure_disposition, classify_failure_disposition, classify_local_failover,
@@ -57,10 +56,11 @@ pub(crate) use self::oauth_error::{
 };
 pub(crate) use self::policy::{
     append_local_failover_policy_to_value, codex_cyber_flag_passthrough_enabled,
-    cyber_continue_failover_enabled, local_failover_policy_from_report_context,
-    local_failover_policy_from_transport, resolve_local_failover_policy,
-    responses_websocket_adapter, LocalFailoverPolicy, LocalFailoverRegexRule,
-    ResponsesWebSocketAdapter, CYBER_CONTINUE_FAILOVER_CONFIG_KEY, RESPONSES_WEBSOCKET_CONFIG_KEY,
+    local_failover_policy_from_report_context, local_failover_policy_from_transport,
+    resolve_local_failover_policy, responses_websocket_adapter,
+    routing_execution_policy_from_report_context, LocalFailoverPolicy, LocalFailoverRegexRule,
+    ResponsesWebSocketAdapter, RESPONSES_WEBSOCKET_CONFIG_KEY,
+    ROUTING_EXECUTION_POLICY_REPORT_FIELD,
 };
 pub(crate) use self::recovery::{
     analyze_local_failover, analyze_local_transport_error, apply_provider_failure_disposition,
