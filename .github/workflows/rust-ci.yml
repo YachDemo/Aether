@@ -2,25 +2,7 @@ name: Rust CI
 
 on:
   workflow_call:
-  push:
-    branches:
-      - master
-      - main
-    paths:
-      - "Cargo.toml"
-      - "Cargo.lock"
-      - "crates/**"
-      - "apps/**"
-      - ".github/workflows/rust-ci.yml"
-      - ".github/workflows/nightly.yml"
-  pull_request:
-    paths:
-      - "Cargo.toml"
-      - "Cargo.lock"
-      - "crates/**"
-      - "apps/**"
-      - ".github/workflows/rust-ci.yml"
-      - ".github/workflows/nightly.yml"
+  # Fork: use upstream CI results; no duplicate push/PR checks.
 
 concurrency:
   group: rust-ci-${{ github.event_name }}-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}

@@ -28,6 +28,7 @@ env:
 
 jobs:
   source:
+    if: github.repository == 'fawney19/Aether'
     name: Resolve main snapshot
     runs-on: ubuntu-latest
     timeout-minutes: 5
